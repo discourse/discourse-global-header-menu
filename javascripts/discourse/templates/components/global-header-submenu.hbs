@@ -1,0 +1,25 @@
+<li class="custom-global-header-nav__list--parent">
+  <a
+    href={{if this.args.menuItem.parent_link this.args.menuItem.parent_link}}
+    {{on "click" (fn @onClick this.args.name)}}
+    class={{if (eq this.args.hamburgerOpenSubmenu this.args.name) "--open"}}
+  >
+    {{this.args.menuItem.parent_text}}
+    {{#if this.args.menuItem.child_links}}
+      {{d-icon "caret-down"}}
+    {{/if}}
+  </a>
+  {{#if this.args.menuItem.child_links}}
+    <ul class="custom-global-header-nav__list--submenu">
+      {{#each this.args.menuItem.child_links as |child|}}
+        {{#if child.link}}
+          <li class="custom-global-header-nav__list--child">
+            <a href={{child.link}} {{on "click" (fn @onClick null)}}>
+              {{child.link_text}}
+            </a>
+          </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  {{/if}}
+</li>

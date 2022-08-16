@@ -1,0 +1,24 @@
+header_links:
+  default: >-
+    [{}]
+  json_schema: '{"type":"array","format":"list","uniqueItems":true,"items":{"type":"object","properties":{"parent_text":{"type":"string"},"parent_link":{"type":"string"},"child_links":{"type":"array","format":"table","uniqueItems":true,"items":{"type":"object","properties":{"link_text":{"type":"string"},"link":{"type":"string"}},"additionalProperties":false}}},"additionalProperties":false}}'
+
+header_logo:
+  default: ""
+  type: upload
+
+header_logo_link:
+  default: "/"
+
+logo_height:
+  default: 3em
+
+hamburger_width:
+  default: 1199
+  type: integer
+
+stick_on_scroll:
+  default: true
+
+relocate_login_buttons:
+  default: true

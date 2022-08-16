@@ -1,0 +1,69 @@
+{{#if this.filteredSetting}}
+  <nav
+    class="{{if this.hamburgerMenuOpen 'custom-global-header-nav--open'}}
+      {{if this.hamburgerMenu 'custom-global-header-nav--hamburger'}}
+      custom-global-header-nav"
+    {{on-resize this.menuResized}}
+  >
+
+    {{#if (theme-setting "header_logo")}}
+      <a
+        href={{theme-setting "header_logo_link"}}
+        class="custom-global-header-nav__logo"
+        {{on "click" (fn this.showSubmenu null)}}
+      >
+        <img {{on "load" this.getHeight}} src={{theme-setting "header_logo"}} />
+      </a>
+    {{/if}}
+
+    <ul class="custom-global-header-nav__list">
+
+      {{#each this.filteredSetting as |fs index|}}
+        <GlobalHeaderSubmenu
+          @menuItem={{fs}}
+          @name={{index}}
+          @hamburgerOpenSubmenu={{this.hamburgerOpenSubmenu}}
+          @onClick={{this.showSubmenu}}
+        />
+      {{/each}}
+
+      {{#if this.hamburgerMenuOpen}}
+        <MountWidget
+          @widget="header-buttons"
+          @args={{hash canSignUp=this.canSignUp}}
+          @showCreateAccount={{route-action "showCreateAccount"}}
+          @showLogin={{route-action "showLogin"}}
+        />
+      {{/if}}
+
+    </ul>
+
+    <span class="custom-global-header-nav__secondary">
+
+      <PluginOutlet
+        @name="custom-global-header-nav-extra"
+        @args={{hash hamburgerMenu=this.hamburgerMenu}}
+      />
+
+      {{#if (theme-setting "relocate_login_buttons")}}
+        <MountWidget
+          @widget="header-buttons"
+          @args={{hash canSignUp=this.canSignUp}}
+          @showCreateAccount={{route-action "showCreateAccount"}}
+          @showLogin={{route-action "showLogin"}}
+        />
+      {{/if}}
+
+    </span>
+
+    {{#if this.hamburgerMenu}}
+      <DButton
+        @class="custom-global-header-nav__toggle"
+        @action={{action "toggleMenu"}}
+        @icon={{if this.hamburgerMenuOpen "times" "bars"}}
+        @title="menu"
+      />
+    {{/if}}
+
+  </nav>
+{{/if}}
