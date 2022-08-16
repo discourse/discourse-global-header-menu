@@ -64,6 +64,7 @@
 
     &--submenu {
       display: none;
+      flex-direction: column;
       position: absolute;
       background: var(--header_background);
       list-style-type: none;
