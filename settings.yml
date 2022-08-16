@@ -13,10 +13,6 @@ header_logo_link:
 logo_height:
   default: 3em
 
-hamburger_width:
-  default: 1199
-  type: integer
-
 stick_on_scroll:
   default: true
 
