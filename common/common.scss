@@ -73,7 +73,7 @@
       position: absolute;
       background: var(--header_background);
       list-style-type: none;
-      box-shadow: shadow("dropdown");
+      box-shadow: var(--shadow-dropdown);
 
       a {
         padding: 0.5em 1em;
