@@ -1,3 +1,4 @@
+{{! template-lint-disable no-capital-arguments }}
 {{#if this.filteredSetting}}
   <nav
     class="{{if this.hamburgerMenuOpen 'custom-global-header-nav--open'}}
@@ -5,7 +6,6 @@
       custom-global-header-nav"
     {{on-resize this.menuResized}}
   >
-
     {{#if (theme-setting "header_logo")}}
       <a
         href={{theme-setting "header_logo_link"}}
@@ -17,7 +17,6 @@
     {{/if}}
 
     <ul class="custom-global-header-nav__list">
-
       {{#each this.filteredSetting as |fs index|}}
         <GlobalHeaderSubmenu
           @menuItem={{fs}}
@@ -35,11 +34,9 @@
           @showLogin={{route-action "showLogin"}}
         />
       {{/if}}
-
     </ul>
 
     <span class="custom-global-header-nav__secondary">
-
       <PluginOutlet
         @name="custom-global-header-nav-extra"
         @args={{hash hamburgerMenu=this.hamburgerMenu}}
@@ -53,17 +50,15 @@
           @showLogin={{route-action "showLogin"}}
         />
       {{/if}}
-
     </span>
 
     {{#if this.hamburgerMenu}}
       <DButton
-        @class="custom-global-header-nav__toggle"
         @action={{action "toggleMenu"}}
         @icon={{if this.hamburgerMenuOpen "times" "bars"}}
         @title="menu"
+        class="custom-global-header-nav__toggle"
       />
     {{/if}}
-
   </nav>
 {{/if}}
