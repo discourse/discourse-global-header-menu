@@ -1,7 +1,7 @@
 import Component from "@glimmer/component";
-import { action } from "@ember/object";
-import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
+import { action } from "@ember/object";
+import { service } from "@ember/service";
 import discourseDebounce from "discourse-common/lib/debounce";
 
 export default class GlobalHeaderMenu extends Component {
@@ -47,7 +47,7 @@ export default class GlobalHeaderMenu extends Component {
     let corePadding = 20;
 
     // checking if children overflow parent
-    for (let item of resizeObserverEntry.target?.children) {
+    for (let item of resizeObserverEntry.target.children) {
       item.style.display = "flex"; // temporarily display to get the width
       totalWidth += item.offsetWidth;
       item.style.display = ""; // fallback to stylesheet display
